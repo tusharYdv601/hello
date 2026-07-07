@@ -1,0 +1,26 @@
+class Solution {
+    public String smallestNumber(String s) {
+
+        int n = s.length();
+        int[] ans = new int[n + 1];
+        Stack<Integer> st = new Stack<>();
+        int c = 1;
+        for (int i = 0; i <= n; i++) {
+            if (i == s.length() ||  s.charAt(i)=='I') {
+                ans[i] = c++;
+                while (!st.isEmpty()) {
+                    ans[st.pop()] = c++;
+                }
+
+            } else {
+                st.push(i);
+            }
+        }
+        String str = "";
+        for (int x : ans) {
+            str = str + x;
+        }
+        return str;
+    }
+
+}
